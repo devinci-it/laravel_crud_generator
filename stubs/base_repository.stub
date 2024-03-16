@@ -20,7 +20,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class BaseRepositoryController extends Controller
+class BaseRepository extends Controller
 {
     /**
      * The model associated with the controller.
