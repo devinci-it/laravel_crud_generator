@@ -17,6 +17,9 @@
         ],
         "post-install-cmd": [
             "php artisan repository:setup"
+        ],
+	"post-update-cmd": [
+            "php vendor/devinci/scripts/setup.php"
         ]
     },
     "authors": [
