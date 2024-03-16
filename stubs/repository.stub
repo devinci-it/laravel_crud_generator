@@ -16,7 +16,7 @@ use App\Models\DummyModel;
  *
  * @package DummyNamespace
  */
-class DummyClass extends RepositoryController
+class DummyClass extends BaseRepository
 {
     /**
      * The model instance associated with the controller.
