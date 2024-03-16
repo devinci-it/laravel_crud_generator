@@ -12,16 +12,10 @@
         }
     },
     "scripts": {
-        "post-root-package-install": [
-            "php artisan repository:setup"
-        ],
-        "post-install-cmd": [
-            "php artisan repository:setup"
-        ],
-	"post-update-cmd": [
-            "php vendor/devinci/scripts/setup.php"
-        ]
-    },
+    	"post-install-cmd": [
+        "@php artisan repository:setup"
+    ]
+},
     "authors": [
         {
             "name": "devinci-it"

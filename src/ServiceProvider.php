@@ -19,5 +19,10 @@ class ServiceProvider extends BaseServiceProvider
                 MakeRepositoryCommand::class, // Updated command class name
             ]);
         }
+    if (!$this->app->configurationIsCached()) {
+                // Perform setup logic here
+                $this->app->make('Illuminate\Contracts\Console\Kernel')->call('repository:setup');
+
+}
     }
 }

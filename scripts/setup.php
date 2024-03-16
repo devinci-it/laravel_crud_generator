@@ -1,7 +1,7 @@
 <?php
 
 // Get the path to the vendor directory
-$vendorPath = __DIR__ . '/../../../';
+$vendorPath = __DIR__ . '/../../../../';
 
 // Define the paths to the files to be deleted relative to the vendor directory
 $filesToDelete = [
