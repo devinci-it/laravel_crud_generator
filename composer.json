@@ -1,0 +1,34 @@
+{
+    "name": "devinci/laravel-utils",
+    "type": "library",
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Devinci\\LaravelUtils\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php artisan repository:setup"
+        ],
+        "post-install-cmd": [
+            "php artisan repository:setup"
+        ]
+    },
+    "authors": [
+        {
+            "name": "devinci-it"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Devinci\\LaravelUtils\\ServiceProvider"
+            ]
+        }
+    }
+}

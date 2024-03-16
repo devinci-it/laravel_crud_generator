@@ -1,0 +1,90 @@
+<?php
+
+/**
+ * BaseApiController Class
+ *
+ * This class serves as a base controller for API controllers. It provides basic CRUD operations.
+ * To use this controller, extend it and set the $model property to the corresponding Eloquent model.
+ *
+ * @category Controller
+ * @package  App\Http\Controllers\Api
+ */
+
+namespace App\Repositories;
+
+use App\Http\Middleware\Controller;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+class BaseRepositoryController extends Controller
+{
+    /**
+     * The model associated with the controller.
+     *
+     * @var Builder|Model
+     */
+    protected Builder|Model $model;
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Collection
+     */
+    public function index(): Collection
+    {
+        return $this->model::all();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function store(Request $request): JsonResponse
+    {
+        $createdModel = $this->model->create($request->all());
+        return response()->json(['id' => $createdModel->id, 'data' => $createdModel], 201);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return Model
+     */
+    public function show(int $id): Model
+    {
+        return $this->model->findOrFail($id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param int     $id
+     * @return JsonResponse
+     */
+    public function update(Request $request, int $id): JsonResponse
+    {
+        $item = $this->model->findOrFail($id);
+        $item->update($request->all());
+        return response()->json($item, 200);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function destroy(int $id): JsonResponse
+    {
+        $this->model::destroy($id);
+        return response()->json(['message' => 'Resource successfully deleted'], 200);
+    }
+}

@@ -1,0 +1,32 @@
+public function testRepo()
+{
+    // Create a new {{modelName}}
+    $new{{modelName}} = $this->store(new Request([
+        {{newModelData}}
+    ]));
+    $new{{modelName}} = json_decode($new{{modelName}}->getContent(), true);
+    $id = $new{{modelName}}['id'];
+
+    // Read the {{modelName}}
+    ${{modelName}} = $this->show($id);
+
+    // Update the {{modelName}}
+    $updated{{modelName}} = $this->update(new Request([
+        {{updatedModelData}}
+    ]), ${{modelName}}->id);
+
+    // Delete the {{modelName}}
+    $this->destroy($id);
+
+    // Prepare a verbose response
+    $response = [
+        'message' => 'CRUD operations test completed successfully.',
+        'create' => 'Created a new {{modelName}} with ID: ' . $id,
+        'read' => 'Read the {{modelName}} with ID: ' . $id,
+        'update' => 'Updated the {{modelName}} with ID: ' . $id,
+        'delete' => 'Deleted the {{modelName}} with ID: ' . $id,
+        'debug' =>$new{{modelName}}
+    ];
+
+    return response()->json($response);
+}

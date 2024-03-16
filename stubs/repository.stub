@@ -1,0 +1,36 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+
+use App\Models\DummyModel;
+
+/**
+ * Class DummyClass
+ *
+ * This class represents a dummy API controller.
+ * It extends the RepositoryController class and provides basic functionalities for handling dummy data.
+ *
+ * @package DummyNamespace
+ */
+class DummyClass extends RepositoryController
+{
+    /**
+     * The model instance associated with the controller.
+     *
+     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model DummyModel
+     */
+    protected Builder|Model $model;
+
+    /**
+     * DummyClass constructor.
+     * Initialize the model instance.
+     */
+    public function __construct()
+    {
+        $this->model = new DummyModel;
+    }
+}
