@@ -1,5 +1,5 @@
 {
-    "name": "devinci/laravel-utils",
+    "name": "devinci-it/laravel-utils",
     "type": "library",
     "require": {
         "php": "^8.2",
